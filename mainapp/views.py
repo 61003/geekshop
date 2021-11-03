@@ -14,7 +14,6 @@ def main(request):
     return render(request, "mainapp/index.html", content)
 
 
-
 def products(request, pk=None):
     title = "продукты"
     links_menu = ProductCategory.objects.all()
@@ -28,6 +27,7 @@ def products(request, pk=None):
     if pk:
         print(f"User select category: {pk}")
     return render(request, "mainapp/products.html", content)
+
 
 def contact(request):
     title = "о нас"
