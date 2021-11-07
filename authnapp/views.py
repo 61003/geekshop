@@ -27,6 +27,7 @@ def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse("main"))
 
+
 def register(request):
     title = "регистрация"
 
