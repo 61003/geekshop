@@ -59,7 +59,6 @@ MIDDLEWARE = [
 ROOT_URLCONF = "geekshop.urls"
 
 
-
 WSGI_APPLICATION = "geekshop.wsgi.application"
 
 
