@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     "authnapp",
     "basketapp",
     "adminapp",
+    "social_django",
 ]
-
 # Auth model
 AUTH_USER_MODEL = "authnapp.ShopUser"
 
@@ -58,21 +58,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "geekshop.urls"
 
-TEMPLATES = [
-    {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "context_processors": [
-                "django.template.context_processors.debug",
-                "django.template.context_processors.request",
-                "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
-            ],
-        },
-    },
-]
 
 WSGI_APPLICATION = "geekshop.wsgi.application"
 
@@ -221,7 +206,25 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "mainapp.context_processors.basket",
+                "social_django.context_processors.backends",
+                "social_django.context_processors.login_redirect",
             ],
         },
     },
 ]
+
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "social_core.backends.github.GithubOAuth2",
+)
+
+import json
+
+with open(
+    os.path.join(BASE_DIR, "tmp", "secrets", "github.json"), "r"
+) as secrets:
+    github_auth = json.load(secrets)
+
+SOCIAL_AUTH_GITHUB_KEY = github_auth["client_id"]
+SOCIAL_AUTH_GITHUB_SECRET = github_auth["client_secret"]
