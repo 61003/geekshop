@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     "social_django",
     "ordersapp",
 ]
+
+
 # Auth model
 AUTH_USER_MODEL = "authnapp.ShopUser"
 
@@ -256,6 +258,7 @@ if DEBUG:
     INSTALLED_APPS.extend([
         "debug_toolbar",
         "template_profiler_panel",
+        "django_extensions",
     ])
 
 
