@@ -68,6 +68,7 @@ $(document).ready(function () {
     };
 
     // Be carefull with class of buttons
+    
     $('.formset_row').formset({
         addText: 'добавить продукт',
         addCssClass: 'btn btn-outline-primary btn-block',
@@ -76,6 +77,6 @@ $(document).ready(function () {
         prefix: 'orderitems',
         added: setDefaultValue,
         removed: itemDelete,
-        hideLastAddForm: true
+        hideLastAddForm: false,
     });
 });
